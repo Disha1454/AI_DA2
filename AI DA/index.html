@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Eligibility</title>
+    <script>
+        async function checkScholarship() {
+            const id = document.getElementById('student_id').value;
+            const response = await fetch(http://localhost:8080/scholarship?id=${id});
+            const data = await response.json();
+            document.getElementById('scholarship_result').textContent = data.message;
+        }
+
+        async function checkExamPermission() {
+            const id = document.getElementById('student_id').value;
+            const response = await fetch(http://localhost:8080/exam_permission?id=${id});
+            const data = await response.json();
+            document.getElementById('exam_result').textContent = data.message;
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Eligibility Checker</h1>
+    <label for="student_id">Enter Student ID:</label>
+    <input type="number" id="student_id" />
+    <button onclick="checkScholarship()">Check Scholarship Eligibility</button>
+    <button onclick="checkExamPermission()">Check Exam Permission</button>
+    <p id="scholarship_result"></p>
+    <p id="exam_result"></p>
+</body>
+</html>
